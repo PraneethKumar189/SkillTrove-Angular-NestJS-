@@ -1,4 +1,4 @@
-import { Body, Controller, HttpStatus, Post, Res,  } from '@nestjs/common';
+import { Body, Controller, Get, HttpStatus, Post, Res,  } from '@nestjs/common';
 
 import { CreateUserDTO } from '../dto/createUser.dto';
 import { Userservice } from '../services/user.service';
@@ -29,6 +29,25 @@ export class UserController {
     }
    
     
+ 
+    
+}
+@Get()
+async getAllUser(@Res() response){
+ try{
+    const users=await this.dss.getAllUser()
+    return response.status(HttpStatus.OK).json({
+    
+        message: 'All students data found successfully',
+        users,
+      });
+ }
+    
+ catch(err)
+ {
+    return response.status(err.status).json(err.response);
+
+ }
     
 }
 }
