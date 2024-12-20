@@ -5,6 +5,7 @@ import { User } from "../schema/user.schema";
 import { IUser } from "../interface/User.interface";
 import { CreateUserDTO } from "../dto/createUser.dto";
 import { promises } from "dns";
+import { UpdateUserDTO } from "../dto/updateUser.dto";
 
 @Injectable()
 export class Userservice{
@@ -27,5 +28,32 @@ export class Userservice{
         return ifUserExists
     }
 
+   async updateuser(reg_no:string,UUD:UpdateUserDTO,):Promise<IUser>{
+        const existingUser = await this.userModel.findByIdAndUpdate(reg_no,UUD,{new:true});
+           
+        if(!existingUser){
+            throw new NotFoundException("User not found");
+        }
 
+        return existingUser;
+       
+
+   }
+  
+   async getUserById(reg_no:string):Promise<IUser>{
+    const  existingUser1=await this.userModel.findById(reg_no).exec();
+    if(!existingUser1){
+        throw new NotFoundException("User not found ");
+    }
+    return existingUser1
+   }
+
+   async deleteUser(reg_no:string):Promise<IUser>{
+    const deleteUser1=await this.userModel.findByIdAndDelete(reg_no);
+    if(!deleteUser1){
+        throw new NotFoundException("User not found");
+
+    }
+    return deleteUser1
+   } 
 }
