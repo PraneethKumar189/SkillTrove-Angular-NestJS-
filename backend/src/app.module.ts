@@ -8,7 +8,8 @@ import { UserSchema } from './user/schema/user.schema';
 
 
 @Module({
-  imports: [UserModule, CoursesModule,MongooseModule.forRoot('mongodb://127.0.0.1.27017',{dbName:'SkillTrove'}),MongooseModule.forFeature([{
+  imports: [UserModule, CoursesModule,MongooseModule.forRoot('mongodb://127.0.0.1:27017', { dbName: 'SkillTrove' })
+    ,MongooseModule.forFeature([{
     name: 'User',
     schema:UserSchema
   }])],
