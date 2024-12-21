@@ -1,7 +1,9 @@
-import { Body, Controller, Get, HttpStatus, Post, Res,  } from '@nestjs/common';
+import { Body, Controller, Get, HttpStatus, Param, Post, Put, Res,  } from '@nestjs/common';
 
 import { CreateUserDTO } from '../dto/createUser.dto';
 import { Userservice } from '../services/user.service';
+import { UpdateUserDTO } from '../dto/updateUser.dto';
+import { ok } from 'assert';
 
 @Controller('user')
 export class UserController {
@@ -50,4 +52,41 @@ async getAllUser(@Res() response){
  }
     
 }
+
+@Put('/:id')
+async updateUser(@Res() response,@Param('id') reg_num:string,@Body() UUD:UpdateUserDTO ){
+    try{
+        const upuser= await this.dss.updateuser(reg_num,UUD);
+        return response.status(HttpStatus.OK).json({
+            message:'User updated successfully',
+            upuser
+        });
+    }
+    catch(err)
+    {
+        return response.status(err.status).json(err.response)
+    }
+}
+
+
+@Get('/:id')
+async getUserbyId(@Res() response,@Param('id') regnum:string ){
+    try{
+
+        const userId = await this.dss.getUserById(regnum)
+        return response.status(HttpStatus.OK).json({
+            message:'User data found succsessfully',
+            userId
+
+        })
+    }
+    catch(err){
+        return response.status(err.status).json(err.response)
+
+    }
+
+}
+
+
+
 }
