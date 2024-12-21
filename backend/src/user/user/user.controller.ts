@@ -1,9 +1,10 @@
-import { Body, Controller, Get, HttpStatus, Param, Post, Put, Res,  } from '@nestjs/common';
+import { Body, Controller, Delete, Get, HttpStatus, Param, Post, Put, Res,  } from '@nestjs/common';
 
 import { CreateUserDTO } from '../dto/createUser.dto';
 import { Userservice } from '../services/user.service';
 import { UpdateUserDTO } from '../dto/updateUser.dto';
 import { ok } from 'assert';
+import { response } from 'express';
 
 @Controller('user')
 export class UserController {
@@ -85,8 +86,22 @@ async getUserbyId(@Res() response,@Param('id') regnum:string ){
 
     }
 
+
+
 }
 
-
+@Delete('/:id')
+async deleteUserById(@Res() response,@Param('id') reg_num:string ){
+    try{
+        const delUser=await this.dss.deleteUser(reg_num)
+        return response.status(HttpStatus.OK).json({
+            message:'User deleted successfully',
+            delUser
+        })
+    }
+  catch(err){
+    return response.status(err.status).json(err.response)
+  }
+}
 
 }
