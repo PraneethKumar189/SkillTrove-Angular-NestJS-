@@ -22,7 +22,3 @@ text-decoration: none;
  align-items: center;
  border-radius: 5px;
 }
-.navb #mer:hover,:active{
-    color: white;
-    background-color: rgb(118, 118, 255);
-}
