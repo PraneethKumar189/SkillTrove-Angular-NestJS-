@@ -11,6 +11,7 @@ import { HomeComponent } from './home/home.component';
 import { CourseComponent } from './course/course.component';
 import { ProfileComponent } from './profile/profile.component';
 import { MyorderComponent } from './myorder/myorder.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { MyorderComponent } from './myorder/myorder.component';
     HomeComponent,
     CourseComponent,
     ProfileComponent,
-    MyorderComponent
+    MyorderComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
