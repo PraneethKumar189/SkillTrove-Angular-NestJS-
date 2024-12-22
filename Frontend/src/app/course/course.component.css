@@ -1,0 +1,32 @@
+.cont{
+    background-image: linear-gradient(to bottom right, rgb(0, 255, 174), rgb(0, 225, 255));
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    margin: 5px;
+    padding: 5px;
+  }
+
+.inner-container
+  {
+    display:flex ;
+    flex-direction: column;
+    border-radius: 10px;
+    margin: 10px;
+    border: 1px ;
+    position: relative;
+  height: 350px;
+  width:25%;
+  background-color: rgb(255, 255, 255);
+}
+
+ #course{
+  display: flex;
+  
+  flex-direction: column;
+ margin: auto;
+ margin-top: 60px;
+ margin-bottom: 20px;
+}
