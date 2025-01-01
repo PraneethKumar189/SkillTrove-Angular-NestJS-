@@ -10,7 +10,7 @@ import { response } from 'express';
 export class UserController {
     constructor(private dss:Userservice){}
 
-  @Post()
+  @Post('/api/v1')
   async createUser(@Res() response,@Body() CUD:CreateUserDTO ){
     try{
         const newUser= await this.dss.createUser(CUD);
@@ -35,7 +35,7 @@ export class UserController {
  
     
 }
-@Get()
+@Get('/api/v1')
 async getAllUser(@Res() response){
  try{
     const users=await this.dss.getAllUser()
@@ -54,7 +54,7 @@ async getAllUser(@Res() response){
     
 }
 
-@Put('/:id')
+@Put('api/v1/:id')
 async updateUser(@Res() response,@Param('id') reg_num:string,@Body() UUD:UpdateUserDTO ){
     try{
         const upuser= await this.dss.updateuser(reg_num,UUD);
@@ -70,7 +70,7 @@ async updateUser(@Res() response,@Param('id') reg_num:string,@Body() UUD:UpdateU
 }
 
 
-@Get('/:id')
+@Get('api/v1/:id')
 async getUserbyId(@Res() response,@Param('id') regnum:string ){
     try{
 
@@ -90,7 +90,7 @@ async getUserbyId(@Res() response,@Param('id') regnum:string ){
 
 }
 
-@Delete('/:id')
+@Delete('api/v1/:id')
 async deleteUserById(@Res() response,@Param('id') reg_num:string ){
     try{
         const delUser=await this.dss.deleteUser(reg_num)
