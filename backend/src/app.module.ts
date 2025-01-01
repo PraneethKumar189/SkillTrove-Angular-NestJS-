@@ -5,6 +5,7 @@ import { UserModule } from './user/user.module';
 import { CoursesModule } from './courses/courses.module';
 import { MongooseModule } from '@nestjs/mongoose';
 import { UserSchema } from './user/schema/user.schema';
+import { AuthModule } from './auth/auth.module';
 
 
 @Module({
@@ -12,7 +13,7 @@ import { UserSchema } from './user/schema/user.schema';
     ,MongooseModule.forFeature([{
     name: 'User',
     schema:UserSchema
-  }])],
+  }]), AuthModule],
   controllers: [AppController],
   providers: [AppService],
 })
