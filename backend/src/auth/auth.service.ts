@@ -6,4 +6,6 @@ import * as bcrypt from 'bcrypt'
 export class AuthService {
     constructor(private userSer:Userservice,private jwtSer:JwtService){}
 
+    async ValidatorUser
+
 }
